@@ -1,3 +1,16 @@
 api/obj/api.csproj.nuget.g.targets
 api/obj/api.csproj.nuget.dgspec.json
 client/.browserslistrc
+api/obj/api.csproj.nuget.g.props
+api/obj/project.nuget.cache
+.dll
+
+api/obj/Debug/net5.0/staticwebassets/api.StaticWebAssets.xml
+api/obj/Debug/net5.0/api.MvcApplicationPartsAssemblyInfo.cs
+api/obj/Debug/net5.0/api.GeneratedMSBuildEditorConfig.editorconfig
+api/obj/Debug/net5.0/api.csproj.FileListAbsolute.txt
+api/obj/api.csproj.EntityFrameworkCore.targets
+api/bin/Debug/net5.0/api.runtimeconfig.dev.json
+api/bin/Debug/net5.0/api.runtimeconfig.json
+api/obj/api.csproj.nuget.g.props
+api/obj/api.csproj.nuget.g.props
