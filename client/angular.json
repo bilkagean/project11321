@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "38a79b3a-004f-4ad1-a5fd-a75b0f937b0a"
+    "analytics": false
   },
   "version": 1,
   "newProjectRoot": "projects",
@@ -64,9 +64,9 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "sslKey": "./ssl/server.key",
+            "ssl": true,
+            "sslKey":"./ssl/server.key" ,
             "sslCert": "./ssl/server.crt",
-            "ssl":true,
             "browserTarget": "client:build"
           },
           "configurations": {
@@ -78,6 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
+            
             "browserTarget": "client:build"
           }
         },

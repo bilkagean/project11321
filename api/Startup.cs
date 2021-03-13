@@ -33,20 +33,6 @@ namespace api
             services.AddApplicationServices(_config);
             services.AddIdentityServices(_config);
             services.AddCors();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(opt =>
-            {
-                opt.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["TokenKey"])),
-                    ValidateAudience = false,
-                };
-
-            } );
-
-
-           
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
