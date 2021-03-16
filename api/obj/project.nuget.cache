@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JVzXHneOIsKRTQCiBOtDkMjZlYvV5ykcMacJvcWhp/4YHmtdh6uzbz6Xfxc1MXdgQIQCTVTJ+wwSJjt5Uafq0g==",
+  "dgSpecHash": "pUgu35iNN+n7hBSWndOPIlWIJkSvs2WT/S3MH5VEsyvAcaLtmVvaU4fMeM4kKmBKCkkElJLayiJnKE+ty9OAFg==",
   "success": true,
-  "projectFilePath": "c:\\Users\\bilge\\OneDrive\\Masaüstü\\project11321\\api\\api.csproj",
+  "projectFilePath": "C:\\Users\\bilge\\OneDrive\\Masaüstü\\project11321\\api\\api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\bilge\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\bilge\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.3\\microsoft.aspnetcore.authentication.jwtbearer.5.0.3.nupkg.sha512",
