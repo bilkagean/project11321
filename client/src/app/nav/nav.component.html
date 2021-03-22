@@ -12,8 +12,9 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
               <!--i shall remove navbar toggler things according to udemy but i wont, give it a try-->
           <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <ng-container *ngIf="accountService.currentUser$| async" >
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" routerLink='/members' routerLinkActive='active' href="#">Matches-members</a>
+              <a class="nav-link" aria-current="page" routerLink='/members' routerLinkActive='active' href="#">Matches</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" routerLink='/lists'  routerLinkActive='active' href="#">Lists</a>
@@ -22,6 +23,11 @@
               <a class="nav-link "routerLink='/messages'  routerLinkActive='active' href="#">Messages</a>
             </li>
            
+          </ng-container>
+          <li class="nav-item">
+            <a class="nav-link "routerLink='/errors'  routerLinkActive='active' href="#">Errors</a>
+          </li>
+
           </ul>
           
 
