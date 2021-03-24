@@ -16,8 +16,8 @@ namespace api.Middleware
         public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger, IHostEnvironment env)
         {
             _env = env;
-            _next = next;
             _logger = logger;
+            _next = next;
         }
 
         public async Task InvokeAsync(HttpContext context)
@@ -25,10 +25,11 @@ namespace api.Middleware
             try
             {
             await _next(context);
-            }catch(Exception ex )
+            }
+            catch(Exception ex )
             {
                 _logger.LogError(ex, ex.Message);
-                context.Response.ContentType = "application/jason";
+                context.Response.ContentType = "application/json";
                 context.Response.StatusCode = (int) HttpStatusCode.InternalServerError;
 
                 var response = _env.IsDevelopment()

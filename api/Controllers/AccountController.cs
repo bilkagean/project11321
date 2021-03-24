@@ -2,6 +2,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using api.DTOs;
+using api.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -22,12 +23,12 @@ namespace api.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<UserDto>> Register(RegisterDTO registerDTO)
         {
-            if (await UserExists(registerDTO.userName)) return BadRequest("Username is taken");
+            if (await UserExists(registerDTO.Username)) return BadRequest("Username is taken");
             using var hmac = new HMACSHA512();
 
-            var user = new Entities.AppUser
+            var user = new AppUser
             {
-                userName = registerDTO.userName.ToLower(),
+                UserName = registerDTO.Username.ToLower(),
                 PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(registerDTO.Password)),
                 PasswordSalt = hmac.Key
             };
@@ -37,21 +38,20 @@ namespace api.Controllers
            
             return new UserDto{
 
-                userName= user.userName,
+                Username= user.UserName,
                 Token= _tokenService.CreateToken(user)
             };
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<UserDto>> Login(LoginDTO loginDTO)//loginDto
+        public async Task<ActionResult<UserDto>> Login(LoginDTO loginDTO)
         {
-            //see if user is registered
+            
             var user = await _context.Users
-            .SingleOrDefaultAsync(x => x.userName.ToLower() == loginDTO.userName.ToLower());
+            .SingleOrDefaultAsync(x => x.UserName == loginDTO.Username);
+
             if (user == null) return Unauthorized("Invalid username");
 
-
-            //looking for password
             using var hmac = new HMACSHA512(user.PasswordSalt);
 
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(loginDTO.Password));
@@ -64,7 +64,7 @@ namespace api.Controllers
 
             return new UserDto{
 
-                userName= user.userName,
+                Username= user.UserName,
                 Token= _tokenService.CreateToken(user)
             };
 
@@ -73,7 +73,7 @@ namespace api.Controllers
 
         private async Task<bool> UserExists(string username)
         {
-            return await _context.Users.AnyAsync(x => x.userName == username.ToLower());
+            return await _context.Users.AnyAsync(x => x.UserName == username.ToLower());
         }
     }
 }
